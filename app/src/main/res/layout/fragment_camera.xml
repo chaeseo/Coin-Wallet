@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.tensorflow.lite.coin.detection.customview.AutoFitTextureView
+        android:id="@+id/texture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <org.tensorflow.lite.coin.detection.customview.OverlayView
+        android:id="@+id/tracking_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/bottomBarTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#80000000"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_marginTop="492dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/classMappingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Class Mapping Text"
+        android:textColor="#00000000"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/bottomButton"
+        android:layout_width="220dp"
+        android:layout_height="57dp"
+        android:layout_below="@+id/bottomBarTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="600dp"
+        android:text="버튼을 눌러주세요"
+        android:layout_marginLeft="100dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button3"
+        android:textSize="20dp" />
+</FrameLayout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="30dp"
+    tools:context=".FirstFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="30dp"
+            android:text="현재 가지고 있는 금액"
+            android:textSize="17dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="358dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="22dp"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="9dp"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/editTextCapture"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="동전을 촬영해주세요"
+                    android:textSize="15dp"
+                    android:gravity="center_vertical"/>
+
+                <ImageButton
+                    android:id="@+id/imageViewCamera"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:contentDescription="Camera Icon"
+                    android:src="@drawable/camera_b" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="22dp"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <EditText
+                android:id="@+id/editTextCapture2"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="지폐 금액을 입력해주세요"
+                android:padding="12dp"
+                android:textSize="15dp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="30dp"
+            android:text="구매할 물건에 필요한 동전"
+            android:textSize="17dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="358dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="22dp"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/editTextCapture3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="금액을 입력해주세요"
+                    android:textSize="15dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/buttonCoinCombination"
+                    android:layout_width="80dp"
+                    android:layout_height="33dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="동전 조합"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:background="#F9F9F9">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="250dp"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="250dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/minus_button"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="22dp"
+            android:background="@drawable/rounded_button2"
+            android:text="차감하기"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+</ScrollView>
