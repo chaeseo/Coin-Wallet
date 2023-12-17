@@ -28,5 +28,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </androidx.appcompat.widget.Toolbar>
+
+
+        <Button
+            android:id="@+id/bottomButton"
+            android:layout_width="220dp"
+            android:layout_height="57dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="1080dp"
+            android:background="@drawable/rounded_button3"
+            android:clickable="true"
+            android:text="버튼을 눌러주세요"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

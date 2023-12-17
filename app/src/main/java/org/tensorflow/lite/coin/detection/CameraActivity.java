@@ -3,6 +3,7 @@ package org.tensorflow.lite.coin.detection;
 import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -26,6 +27,7 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +85,20 @@ public abstract class CameraActivity extends AppCompatActivity
 
     if (hasPermission()) {
       setFragment();
+
+      // "YourButtonId"는 실제 버튼의 ID로 대체되어야 합니다.
+      Button yourButton = findViewById(R.id.bottomButton);
+
+      if (yourButton != null) {
+        yourButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            // 버튼을 클릭한 경우 수행할 동작을 여기에 추가합니다.
+            // 현재 액티비티를 닫기
+            finish();
+          }
+        });
+      }
     } else {
       requestPermission();
     }
