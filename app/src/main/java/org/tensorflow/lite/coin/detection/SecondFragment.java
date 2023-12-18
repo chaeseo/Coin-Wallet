@@ -3,6 +3,8 @@ package org.tensorflow.lite.coin.detection;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,9 +26,10 @@ import java.util.Locale;
 public class SecondFragment extends Fragment {
 
     private List<String> numberList;
+    private List<String> usageList;
     private List<Long> timestamps;
     private ArrayAdapter<String> adapter;
-    private final double EXCHANGE_RATE = 9.12; // 환율
+    private final double EXCHANGE_RATE = 9.12;
 
     private TextView totalJpyTextView;
     private TextView totalKrwTextView;
@@ -44,6 +45,7 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         numberList = new ArrayList<>();
+        usageList = new ArrayList<>();
         timestamps = new ArrayList<>();
         adapter = new ArrayAdapter<String>(requireContext(), 0, numberList) {
             @NonNull
@@ -62,14 +64,37 @@ public class SecondFragment extends Fragment {
                 TextView timestampTextView = convertView.findViewById(R.id.timestampTextView);
                 timestampTextView.setText(formatTimestamp(timestamps.get(position)));
 
+                EditText usageEditText = convertView.findViewById(R.id.usageEditText);
+                usageEditText.removeTextChangedListener((TextWatcher) usageEditText.getTag(R.id.text_watcher));
+                usageEditText.setText(usageList.get(position));
+
+                TextWatcher textWatcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        // 이 부분은 필요하지 않을 수 있습니다.
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        // 이 부분은 필요하지 않을 수 있습니다.
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        usageList.set(position, editable.toString());
+                    }
+                };
+                usageEditText.addTextChangedListener(textWatcher);
+                usageEditText.setTag(R.id.text_watcher, textWatcher);
+
                 return convertView;
             }
+
         };
 
         ListView numberListView = view.findViewById(R.id.numberListView);
         numberListView.setAdapter(adapter);
 
-        // 아이템을 클릭하여 삭제하는 부분 추가
         numberListView.setOnItemClickListener((parent, view1, position, id) -> showDeleteConfirmationDialog(position));
 
         EditText numberEditText = view.findViewById(R.id.numberEditText);
@@ -85,6 +110,7 @@ public class SecondFragment extends Fragment {
                 double krwAmount = jpyAmount * EXCHANGE_RATE;
 
                 numberList.add(String.valueOf(jpyAmount));
+                usageList.add(""); // 새로운 입력에 대한 사용처 추가
                 timestamps.add(System.currentTimeMillis());
                 adapter.notifyDataSetChanged();
                 numberEditText.setText("");
@@ -125,32 +151,18 @@ public class SecondFragment extends Fragment {
     }
 
     private void showDeleteConfirmationDialog(final int position) {
-        // 다이얼로그의 텍스트 색상을 검은색으로 지정한 스타일 사용
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AlertDialogStyle);
 
         builder.setTitle("삭제 확인")
                 .setMessage("해당 사용 내역을 삭제하시겠습니까?")
-                .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 클릭된 항목 삭제
-                        numberList.remove(position);
-                        timestamps.remove(position);
-
-                        // 어댑터에 변경사항 알림
-                        adapter.notifyDataSetChanged();
-
-                        // 총 지출 금액 업데이트
-                        updateTotalAmount();
-                    }
+                .setPositiveButton("삭제", (dialog, which) -> {
+                    numberList.remove(position);
+                    usageList.remove(position);
+                    timestamps.remove(position);
+                    adapter.notifyDataSetChanged();
+                    updateTotalAmount();
                 })
-                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 취소 버튼 클릭 시 아무 작업도 수행하지 않음
-                        dialog.dismiss();
-                    }
-                });
+                .setNegativeButton("취소", (dialog, which) -> dialog.dismiss());
 
         builder.create().show();
     }
