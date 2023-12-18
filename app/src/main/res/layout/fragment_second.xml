@@ -1,27 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- fragment_second.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
 
-    <!-- 추가된 TextView -->
-    <TextView
-        android:id="@+id/textViewNumbers"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="358dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Numbers:"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="22dp"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-    <!-- 추가된 RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNumbers"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/numberEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="금액을 입력해주세요"
+                android:textSize="15dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/black"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="80dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rounded_button"
+                android:text="입력"
+                android:textColor="@android:color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listViewCardView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="16dp"
-        android:background="#F0F0F0" />
+        android:layout_height="450dp"
+        android:layout_marginTop="92dp"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-</LinearLayout>
+        <ListView
+            android:id="@+id/numberListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#6AEFEFEF" />
+    </androidx.cardview.widget.CardView>
 
+    <!-- 추가된 부분: 총 금액을 나타내는 카드뷰 텍스트 바 -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/totalJpyTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textColor="#BD1A1A"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/totalKrwTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="#0E3FEF"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

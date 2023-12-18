@@ -46,7 +46,10 @@
                     android:background="@android:color/transparent"
                     android:hint="동전을 촬영해주세요"
                     android:textSize="15dp"
-                    android:gravity="center_vertical"/>
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    />
 
                 <ImageButton
                     android:id="@+id/imageViewCamera"
@@ -78,7 +81,10 @@
                 android:background="@android:color/transparent"
                 android:hint="지폐 금액을 입력해주세요"
                 android:padding="12dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:inputType="number"
+                android:textColor="@android:color/black"
+                />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -87,8 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="30dp"
-            android:text="구매할 물건에 필요한 동전"
-            android:textSize="17dp" />
+            android:text="구매할 물건에 필요한 금액"
+            android:textSize="17dp"
+            android:inputType="number" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="358dp"

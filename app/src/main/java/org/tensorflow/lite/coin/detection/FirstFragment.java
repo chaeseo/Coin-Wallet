@@ -86,38 +86,9 @@ public class FirstFragment extends Fragment {
                 }
             });
         }
-
-        Button minusButton = view.findViewById(R.id.minus_button);
-        if (minusButton != null) {
-            minusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onMinusButtonClick();
-                }
-            });
-        }
     }
 
-    private void onMinusButtonClick() {
-        String enteredNumber = editTextCapture3.getText().toString();
-
-        if (!enteredNumber.isEmpty()) {
-            NumberModel numberModel = new NumberModel(enteredNumber);
-            numberList.add(numberModel);
-
-            // 리스트를 SecondFragment로 전달
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("numberList", new ArrayList<>(numberList));
-
-            SecondFragment secondFragment = new SecondFragment();
-            secondFragment.setArguments(bundle);
-
-            // 프래그먼트 이동
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, secondFragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        }
-    }
 }
+
+
+
